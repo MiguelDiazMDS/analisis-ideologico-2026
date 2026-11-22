@@ -1,0 +1,35 @@
+country_en,pais,region,heritage_2026,fraser_2026,fraser_tamano_estado,hofstede_idv_2023,giem_wvs,gallup_ley_orden_2025,eiu_democracia_2025,confianza_social_wvs,eje_cultural_iw,pilar1_libre_mercado,pilar2_resp_individual,pilar3_ley_orden,isid_base,isid_mercado,isid_ley_orden,isid_giem,cumple_filtro_antiestatista,ranking_isid_filtrado
+Switzerland,Suiza,Europa,83.7,8.45,7.67,79,0.573,91,9.32,59,"Secular-Racional | Autoexpresión",81.88,77.85,91.0,83.58,82.49,86.09,81.20,True,1
+Singapore,Singapur,Asia-Pacífico,84.4,8.43,7.38,43,,95,6.18,34,"Confuciano | Restricción/Orden",81.18,58.40,95.0,78.19,77.11,84.23,,True,2
+United States,Estados Unidos,Norteamérica,72.8,8.21,7.39,60,0.704,86,7.65,37,"Más Tradicional | Autoexpresión",76.38,66.95,86.0,76.44,75.48,79.79,76.73,True,3
+Lithuania,Lituania,Europa,75.0,7.82,6.75,55,,91,7.55,32,"Secular-Racional | Supervivencia-Mixto",73.87,61.25,91.0,75.37,73.51,80.77,,True,4
+Taiwan,Taiwán,Asia-Pacífico,79.8,7.90,7.57,40,0.591,89,8.78,31,"Secular-Confuciano | Seguridad",78.29,57.85,89.0,75.05,74.30,80.09,74.89,True,5
+Canada,Canadá,Norteamérica,75.6,7.89,6.31,72,,84,9.08,47,"Secular-Racional | Autoexpresión",73.00,67.55,84.0,74.85,73.57,77.96,,True,6
+Estonia,Estonia,Europa,79.0,7.92,6.20,62,0.625,88,8.07,34,"Secular-Racional | Supervivencia",73.97,62.00,88.0,74.66,73.19,79.29,74.71,True,7
+New Zealand,Nueva Zelanda,Asia-Pacífico,78.0,8.38,6.27,69,0.750,82,9.62,57,"Secular-Racional | Alta Autoexpresión",75.44,65.85,82.0,74.43,73.88,77.13,75.55,True,8
+Czechia,República Checa,Europa,73.0,7.81,6.13,70,0.743,84,8.15,27,"Secular-Racional | Pragmático",71.27,65.65,84.0,73.64,72.13,77.15,74.72,True,9
+Australia,Australia,Asia-Pacífico,80.1,8.06,6.17,73,0.636,78,8.85,49,"Secular-Racional | Autoexpresión",74.76,67.35,78.0,73.37,73.18,75.06,73.02,True,10
+United Kingdom,Reino Unido,Europa,70.0,7.96,6.08,76,0.596,80,8.34,43,"Secular-Racional | Autoexpresión",70.60,68.40,80.0,73.00,71.82,75.33,72.10,True,11
+Ireland,Irlanda,Europa,83.3,8.16,6.25,58,,82,9.33,,"Tradicional-Secular | Autoexpresión",76.46,60.25,82.0,72.90,72.71,76.27,,True,12
+Spain,España,Europa,66.8,7.78,6.19,67,0.344,84,8.20,41,"Secular-Racional | Alta Autoexpresión",69.18,64.45,84.0,72.54,70.73,76.39,69.08,True,13
+Chile,Chile,Latinoamérica,74.3,7.85,7.61,49,0.340,71,7.97,,"Tradicional-Secular | Mixto",76.31,62.55,71.0,69.95,71.12,70.64,66.40,True,14
+Georgia,Georgia,Eurasia,70.0,7.76,7.30,15,0.650,86,4.36,,"Tradicional | Supervivencia",73.56,44.00,86.0,67.85,67.18,74.49,69.82,True,15
+Denmark,Dinamarca,Europa,79.0,8.13,5.38,89,0.643,90,9.42,74,"Muy Secular | Máx. Autoexpresión",72.25,71.40,90.0,77.88,75.54,81.84,77.35,False,
+Netherlands,Países Bajos,Europa,79.0,7.96,5.23,100,0.505,86,8.93,57,"Muy Secular | Máx. Autoexpresión",71.20,76.15,86.0,77.78,75.64,80.33,75.19,False,
+Germany,Alemania,Europa,72.0,7.88,5.79,79,0.506,86,8.73,42,"Secular-Racional | Autoexpresión",70.15,68.45,86.0,74.87,72.81,78.53,72.96,False,
+Finland,Finlandia,Europa,76.6,7.96,4.93,75,,90,9.37,68,"Muy Secular | Alta Autoexpresión",69.46,62.15,90.0,73.87,71.37,79.30,,False,
+Japan,Japón,Asia-Pacífico,70.3,7.95,5.92,62,0.510,88,8.85,34,"Muy Secular | Seguridad/Orden",70.19,60.60,88.0,72.93,70.88,78.07,71.83,False,
+Luxembourg,Luxemburgo,Europa,79.7,7.92,4.90,60,,88,9.08,,"Secular-Racional | Autoexpresión",70.31,54.50,88.0,70.94,69.11,76.88,,False,
+Sweden,Suecia,Europa,78.0,7.66,,87,0.718,88,9.35,63,"Muy Secular | Máx. Autoexpresión",,,88.0,,,,,False,
+Norway,Noruega,Europa,79.0,7.67,,81,,91,9.81,72,"Muy Secular | Máx. Autoexpresión",,,91.0,,,,,False,
+South Korea,Corea del Sur,Asia-Pacífico,74.0,7.47,,58,0.428,88,7.75,33,"Secular-Confuciano | Seguridad",,,88.0,,,,,False,
+UAE,Emiratos Árabes Unidos,MENA,72.0,7.35,,36,,95,3.18,,"Muy Tradicional | Supervivencia",,,95.0,,,,,False,
+Israel,Israel,MENA,68.0,7.57,,56,,82,7.80,,"Tradicional-Mixto | Seguridad",,,82.0,,,,,False,
+Poland,Polonia,Europa,69.0,7.12,,47,0.637,84,7.65,24,"Tradicional-Católico | Mixto",,,84.0,,,,,False,
+Hungary,Hungría,Europa,63.0,7.36,,71,0.556,82,6.58,27,"Secular-Conservador | Supervivencia",,,82.0,,,,,False,
+Mauritius,Mauricio,África,73.0,7.97,7.68,,,80,8.23,,"Tradicional-Mixto | Mixto",,,80.0,,,,,False,
+France,Francia,Europa,65.0,7.51,,74,0.545,81,8.05,26,"Secular-Racional | Autoexpresión",,,81.0,,,,,False,
+Saudi Arabia,Arabia Saudí,MENA,65.0,6.64,,48,,92,2.08,,"Muy Tradicional | Supervivencia",,,92.0,,,,,False,
+El Salvador,El Salvador,Latinoamérica,57.7,7.11,,19,,92,4.57,,"Tradicional | Supervivencia",,,92.0,,,,,False,
+Brazil,Brasil,Latinoamérica,52.4,6.58,,36,0.531,74,6.76,7,"Tradicional | Mixto",,,74.0,,,,,False,
+China,China,Asia-Pacífico,48.3,6.18,,43,0.426,76,2.11,63,"Secular | Supervivencia",,,76.0,,,,,False,

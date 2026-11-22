@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Radiografía Ideológica Global &amp; Índice ISID 2026</title>
+  <meta
+    name="description"
+    content="Panel interactivo de la Radiografía Ideológica Global y Ranking de los 10 Países con Mayor Orientación de Derechas (ISID 2026). Datos verificados 2021–2026 de 34 economías."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" defer></script>
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark" aria-hidden="true">ISID</span>
+        <span class="brand-text">
+          <strong>Observatorio Ideológico</strong>
+          <small>Edición 2026</small>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Secciones principales">
+        <a href="#simulador">Ranking y Simulador</a>
+        <a href="#cuadros">Cuadros de Mando</a>
+        <a href="#ejes">Seis Ejes</a>
+        <a href="#sensibilidad">Casos Límite</a>
+        <a href="#explorador">Datos (34)</a>
+        <a href="#metodologia">Metodología</a>
+      </nav>
+
+      <div class="topbar-actions">
+        <button id="themeToggle" class="icon-btn" type="button" title="Cambiar tema claro/oscuro" aria-label="Cambiar tema claro u oscuro">
+          <span class="theme-icon" aria-hidden="true">◐</span>
+        </button>
+        <a class="pill-btn pill-btn-outline" href="informe_ideologia_global_2026.md" target="_blank" rel="noopener">
+          Informe .md
+        </a>
+        <a class="pill-btn pill-btn-primary" href="https://github.com/MiguelDiazMDS/analisis-ideologico-2026" target="_blank" rel="noopener">
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-meta">
+          <span class="badge badge-blue">Estudio Empírico 2021–2026</span>
+          <span class="badge">34 Economías</span>
+          <span class="badge">7 Fuentes Verificadas</span>
+          <span class="badge" id="generatedAtBadge">Actualizado 2026</span>
+        </div>
+
+        <h1 class="hero-title">
+          Radiografía Ideológica Global y Ranking de los 10 Países con Mayor Orientación de Derechas (2026)
+        </h1>
+
+        <p class="hero-lead">
+          Bajo una definición operativa estricta —la convergencia simultánea de
+          <strong>libre mercado con Estado limitado</strong>, <strong>responsabilidad individual</strong> y
+          <strong>preferencia por la ley y el orden</strong>—, el Índice Sintético de Orientación de Derechas (ISID, 0–100)
+          demuestra que los seis ejes ideológicos contemporáneos <em>no se alinean sobre un continuo unidimensional</em>.
+        </p>
+
+        <div class="kpi-grid">
+          <article class="kpi-card kpi-accent">
+            <span class="kpi-label">Líder Global ISID 2026</span>
+            <div class="kpi-value-row">
+              <strong class="kpi-value">Suiza</strong>
+              <span class="kpi-num">83.58</span>
+            </div>
+            <p class="kpi-sub">Derecha liberal-subsidiaria · #1 en todas las ponderaciones</p>
+          </article>
+
+          <article class="kpi-card">
+            <span class="kpi-label">Mercado ↔ Democracia</span>
+            <div class="kpi-value-row">
+              <strong class="kpi-num mono">r = +0.705</strong>
+              <span class="kpi-tag tag-pos">Fuerte</span>
+            </div>
+            <p class="kpi-sub">Fraser 2026 vs. EIU 2025 (y <code>r = 0.637</code> con Heritage 2026)</p>
+          </article>
+
+          <article class="kpi-card">
+            <span class="kpi-label">Individualismo ↔ Confianza</span>
+            <div class="kpi-value-row">
+              <strong class="kpi-num mono">r = +0.615</strong>
+              <span class="kpi-tag tag-pos">Alta</span>
+            </div>
+            <p class="kpi-sub">Hofstede/Culture Factor 2023 vs. Confianza Social WVS</p>
+          </article>
+
+          <article class="kpi-card">
+            <span class="kpi-label">Ley y Orden ↔ Democracia</span>
+            <div class="kpi-value-row">
+              <strong class="kpi-num mono">r = -0.079</strong>
+              <span class="kpi-tag tag-neutral">Ortogonal</span>
+            </div>
+            <p class="kpi-sub">Independiente también del individualismo (<code>r = -0.017</code>)</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 1: SIMULADOR Y RANKING TOP 10 -->
+    <section id="simulador" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Sección 01 · Modelo Interactivo</span>
+            <h2>Ranking ISID 2026 y Simulador de Ponderaciones</h2>
+          </div>
+          <p class="section-desc">
+            Modifica el peso de los tres pilares o ajusta el umbral antiestatista (Fraser Área 1) para
+            comprobar en tiempo real la estabilidad del Top 10 y el impacto del tamaño del Estado.
+          </p>
+        </div>
+
+        <div class="simulator-panel card">
+          <div class="sim-top-row">
+            <div class="preset-group" role="group" aria-label="Escenarios predefinidos">
+              <span class="control-title">Escenarios rápidos:</span>
+              <button type="button" class="preset-btn active" data-preset="base">Equilibrado (33 / 33 / 33)</button>
+              <button type="button" class="preset-btn" data-preset="mercado">Énfasis Mercado (50 / 30 / 20)</button>
+              <button type="button" class="preset-btn" data-preset="orden">Énfasis Ley y Orden (25 / 20 / 55)</button>
+            </div>
+
+            <div class="filter-controls">
+              <label class="switch-label">
+                <input type="checkbox" id="filterToggle" checked />
+                <span class="switch-ui" aria-hidden="true"></span>
+                <span>Filtro antiestatista (<code>Fraser Área 1 ≥ <strong id="thresholdVal">6.0</strong></code>)</span>
+              </label>
+              <input
+                type="range"
+                id="thresholdSlider"
+                min="4.5"
+                max="7.5"
+                step="0.1"
+                value="6.0"
+                aria-label="Umbral mínimo Fraser Tamaño del Estado"
+              />
+            </div>
+          </div>
+
+          <div class="sliders-grid">
+            <div class="slider-card">
+              <div class="slider-header">
+                <label for="wP1">Pilar 1 · Libre Mercado</label>
+                <span class="mono slider-pct" id="wP1Pct">33.3%</span>
+              </div>
+              <input type="range" id="wP1" min="0" max="100" step="1" value="33" />
+              <small>Heritage 2026 + Fraser 2026 + Tamaño Estado</small>
+            </div>
+
+            <div class="slider-card">
+              <div class="slider-header">
+                <label for="wP2">Pilar 2 · Resp. Individual</label>
+                <span class="mono slider-pct" id="wP2Pct">33.3%</span>
+              </div>
+              <input type="range" id="wP2" min="0" max="100" step="1" value="33" />
+              <small>Hofstede IDV 2023 + Tamaño Estado</small>
+            </div>
+
+            <div class="slider-card">
+              <div class="slider-header">
+                <label for="wP3">Pilar 3 · Ley y Orden</label>
+                <span class="mono slider-pct" id="wP3Pct">33.3%</span>
+              </div>
+              <input type="range" id="wP3" min="0" max="100" step="1" value="34" />
+              <small>Gallup Law &amp; Order Index 2025</small>
+            </div>
+          </div>
+
+          <div class="sim-status-bar">
+            <span id="simSummaryText">Mostrando Top 10 de 15 países que cumplen el filtro antiestatista (Fraser ≥ 6.0).</span>
+            <button type="button" id="resetSimBtn" class="text-btn">Restablecer valores base</button>
+          </div>
+        </div>
+
+        <div class="ranking-layout">
+          <div class="card chart-card">
+            <div class="card-head">
+              <div>
+                <h3>Top 10 ISID y Pruebas de Sensibilidad</h3>
+                <p class="card-sub">Barras = escenario activo · Diamantes = Mercado (50/30/20) · Puntos = Orden (25/20/55)</p>
+              </div>
+              <a class="mini-link" href="charts/03_ranking_isid_sensibilidad.html" target="_blank" rel="noopener">
+                Abrir HTML original ↗
+              </a>
+            </div>
+            <div id="chartRanking" class="plotly-box plotly-tall"></div>
+          </div>
+
+          <div class="card ranking-list-card">
+            <div class="card-head">
+              <div>
+                <h3>Detalle del Top 10 Activo</h3>
+                <p class="card-sub">Pulsa sobre cualquier país para abrir su ficha ideológica completa</p>
+              </div>
+            </div>
+            <div id="top10Cards" class="top10-list" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: CUADROS DE MANDO INTERACTIVOS -->
+    <section id="cuadros" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Sección 02 · Cuadros de Mando</span>
+            <h2>Cartografía Visual y Análisis Multidimensional</h2>
+          </div>
+          <p class="section-desc">
+            Explora los cuadros de mando del estudio con filtros en vivo, compara hasta 4 países en un radar
+            de seis dimensiones o abre directamente los gráficos HTML exportados por el cuaderno Jupyter.
+          </p>
+        </div>
+
+        <div class="tabs-bar" role="tablist" aria-label="Cuadros de mando disponibles">
+          <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="mercado">
+            1. Mercado vs. Democracia
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="estado">
+            2. Estado vs. Individualismo
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="correlaciones">
+            3. Matriz de Correlaciones
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="radar">
+            4. Comparador de Países
+          </button>
+          <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="notebook">
+            5. Gráficos HTML del Notebook
+          </button>
+        </div>
+
+        <!-- TAB 1 -->
+        <div class="tab-panel active card" id="tab-mercado" role="tabpanel">
+          <div class="card-head wrap-head">
+            <div>
+              <h3>Libertad Económica (Heritage 2026) vs. Democracia (EIU 2025)</h3>
+              <p class="card-sub">Tamaño de burbuja proporcional a la Confianza Social (WVS). Líneas discontinuas en Heritage = 70 y Democracia plena = 8.0.</p>
+            </div>
+            <div class="head-controls">
+              <select id="regionFilterChart1" class="select-input" aria-label="Filtrar por región">
+                <option value="ALL">Todas las regiones</option>
+              </select>
+              <a class="mini-link" href="charts/01_mercado_democracia_confianza.html" target="_blank" rel="noopener">
+                HTML original ↗
+              </a>
+            </div>
+          </div>
+          <div id="chartMercado" class="plotly-box plotly-xl"></div>
+          <div class="insight-strip">
+            <strong>Lectura clave:</strong> El capitalismo avanzado tiende a coexistir con democracias plenas (<code>r = 0.637</code> Heritage; <code>r = 0.705</code> Fraser), pero existen excepciones capitalistas de orden sin democracia plena como Singapur (6.18 EIU) y Emiratos Árabes Unidos (3.18 EIU).
+          </div>
+        </div>
+
+        <!-- TAB 2 -->
+        <div class="tab-panel card" id="tab-estado" role="tabpanel">
+          <div class="card-head wrap-head">
+            <div>
+              <h3>Contención Fiscal (Fraser Área 1) vs. Individualismo Cultural (2023)</h3>
+              <p class="card-sub">Separa el bloque de <em>Individualismo de Estado Limitado</em> de la paradoja nórdica/europea del <em>Individualismo Estatista</em> (&lt; 6.0) y del <em>Colectivismo Pro-Mercado</em> asiático.</p>
+            </div>
+            <a class="mini-link" href="charts/02_individualismo_estado_giem.html" target="_blank" rel="noopener">
+              HTML original ↗
+            </a>
+          </div>
+          <div id="chartEstado" class="plotly-box plotly-xl"></div>
+          <div class="insight-strip">
+            <strong>Lectura clave:</strong> Países Bajos (IDV 100) y Dinamarca (IDV 89) lideran el individualismo cultural pero caen bajo el umbral antiestatista (5.23 y 5.38). En el extremo opuesto, Singapur (43) y Taiwán (40) combinan Estado muy contenido (7.38 y 7.57) con culturas más orientadas al orden comunitario.
+          </div>
+        </div>
+
+        <!-- TAB 3 -->
+        <div class="tab-panel card" id="tab-correlaciones" role="tabpanel">
+          <div class="card-head">
+            <div>
+              <h3>Matriz de Correlaciones Empíricas entre Ejes (n = 33 países)</h3>
+              <p class="card-sub">Coeficiente de correlación de Pearson entre los indicadores principales del estudio (muestra con serie Hofstede 2023).</p>
+            </div>
+          </div>
+          <div id="chartCorr" class="plotly-box plotly-xl"></div>
+          <div class="insight-strip">
+            <strong>Hallazgo estructural:</strong> La multidimensionalidad es inequívoca: la seguridad percibida (Gallup Ley y Orden) no predice ni democracia (<code>r = -0.079</code>) ni individualismo (<code>r = -0.017</code>), lo que explica la convergencia en orden de países tan distintos como Singapur, Suiza, Lituania, Noruega, EAU y El Salvador.
+          </div>
+        </div>
+
+        <!-- TAB 4 -->
+        <div class="tab-panel card" id="tab-radar" role="tabpanel">
+          <div class="card-head wrap-head">
+            <div>
+              <h3>Comparador Multidimensional de Países (Escala 0–100)</h3>
+              <p class="card-sub">Compara hasta 4 economías en los 6 indicadores clave normalizados a 100.</p>
+            </div>
+            <div class="radar-selectors">
+              <select id="radarCountry1" class="select-input" aria-label="País 1"></select>
+              <select id="radarCountry2" class="select-input" aria-label="País 2"></select>
+              <select id="radarCountry3" class="select-input" aria-label="País 3"></select>
+              <select id="radarCountry4" class="select-input" aria-label="País 4"></select>
+            </div>
+          </div>
+          <div class="radar-grid">
+            <div id="chartRadar" class="plotly-box plotly-tall"></div>
+            <div id="radarComparisonTable" class="radar-table-wrap"></div>
+          </div>
+        </div>
+
+        <!-- TAB 5 -->
+        <div class="tab-panel card" id="tab-notebook" role="tabpanel">
+          <div class="card-head wrap-head">
+            <div>
+              <h3>Visor Directo de los Cuadros de Mando Generados por Jupyter</h3>
+              <p class="card-sub">Archivos HTML independientes exportados por <code>notebooks/analisis_isid_2026.ipynb</code> en la carpeta <code>charts/</code>.</p>
+            </div>
+            <div class="head-controls">
+              <select id="notebookChartSelect" class="select-input" aria-label="Seleccionar gráfico HTML">
+                <option value="charts/01_mercado_democracia_confianza.html">01 · Mercado vs. Democracia y Confianza</option>
+                <option value="charts/02_individualismo_estado_giem.html">02 · Individualismo vs. Tamaño del Estado</option>
+                <option value="charts/03_ranking_isid_sensibilidad.html">03 · Ranking ISID Top 10 y Sensibilidad</option>
+              </select>
+              <a id="notebookChartExternal" class="mini-link" href="charts/01_mercado_democracia_confianza.html" target="_blank" rel="noopener">
+                Abrir en pestaña nueva ↗
+              </a>
+            </div>
+          </div>
+          <div class="iframe-shell">
+            <iframe
+              id="notebookIframe"
+              title="Gráfico interactivo generado por Jupyter"
+              src="charts/01_mercado_democracia_confianza.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: LOS SEIS EJES IDEOLÓGICOS -->
+    <section id="ejes" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Sección 03 · Cartografía Conceptual</span>
+            <h2>Los Seis Ejes Ideológicos Contemporáneos</h2>
+          </div>
+          <p class="section-desc">
+            Síntesis comparada de las seis dimensiones analizadas en el informe y sus referentes empíricos globales.
+          </p>
+        </div>
+
+        <div class="axes-grid">
+          <article class="axis-card card">
+            <div class="axis-num">01</div>
+            <h3>Libre Mercado vs. Estatismo</h3>
+            <p>
+              Singapur (84.4 Heritage; 8.43 Fraser) y Suiza (83.7; 8.45) lideran la libertad económica. Al aislar el
+              <em>Área 1 de Fraser (Tamaño del Estado)</em>, el bloque antiestatista se separa con claridad de las
+              socialdemocracias de mercado.
+            </p>
+            <div class="axis-chips">
+              <span>Suiza 7.67</span>
+              <span>Chile 7.61</span>
+              <span>Taiwán 7.57</span>
+              <span>EE. UU. 7.39</span>
+              <span class="chip-muted">Dinamarca 5.38</span>
+            </div>
+          </article>
+
+          <article class="axis-card card">
+            <div class="axis-num">02</div>
+            <h3>Individualismo y Responsabilidad Individual</h3>
+            <p>
+              En la serie actualizada 2023 (Culture Factor/Hofstede), Europa Occidental lidera el individualismo,
+              revelando la paradoja del <em>individualismo estatista</em>. En mentalidad pro-mercado (GIEM/WVS),
+              encabezan Nueva Zelanda, Chequia, Suecia y EE. UU.
+            </p>
+            <div class="axis-chips">
+              <span>Países Bajos IDV 100</span>
+              <span>Suiza IDV 79</span>
+              <span>NZ GIEM 0.750</span>
+              <span>Chequia 0.743</span>
+              <span>EE. UU. 0.704</span>
+            </div>
+          </article>
+
+          <article class="axis-card card">
+            <div class="axis-num">03</div>
+            <h3>Libertad Individual vs. Autoritarismo</h3>
+            <p>
+              Las democracias plenas nórdicas, Nueva Zelanda, Irlanda y Suiza (#1 en el <em>Human Freedom Index</em> 2025)
+              contrastan con modelos capitalistas de orden sin democracia liberal plena como Singapur, Hong Kong o EAU.
+            </p>
+            <div class="axis-chips">
+              <span>Noruega 9.81</span>
+              <span>NZ 9.62</span>
+              <span>Suiza 9.32</span>
+              <span class="chip-warn">Singapur 6.18</span>
+              <span class="chip-warn">EAU 3.18</span>
+            </div>
+          </article>
+
+          <article class="axis-card card">
+            <div class="axis-num">04</div>
+            <h3>High Trust vs. Low Trust</h3>
+            <p>
+              Menos del 30% de la población mundial afirma poder confiar en la mayoría de las personas. Los países nórdicos
+              y Suiza alcanzan máximos globales, frente a niveles intermedios en EE. UU., Singapur o Japón, y mínimos en
+              América Latina.
+            </p>
+            <div class="axis-chips">
+              <span>Dinamarca 74%</span>
+              <span>Noruega 72%</span>
+              <span>Suiza 59%</span>
+              <span>EE. UU. 37%</span>
+              <span class="chip-muted">Brasil 7%</span>
+            </div>
+          </article>
+
+          <article class="axis-card card">
+            <div class="axis-num">05</div>
+            <h3>Seguridad vs. Permisividad</h3>
+            <p>
+              En el <em>Law and Order Index</em> de Gallup (media global: 80/100), la percepción de seguridad es transversal
+              al régimen político: destacan Singapur, EAU, El Salvador, Suiza, Lituania y Noruega.
+            </p>
+            <div class="axis-chips">
+              <span>Singapur 95</span>
+              <span>EAU 95</span>
+              <span>El Salvador 92</span>
+              <span>Suiza 91</span>
+              <span>Lituania 91</span>
+            </div>
+          </article>
+
+          <article class="axis-card card">
+            <div class="axis-num">06</div>
+            <h3>Conservador vs. Progresista</h3>
+            <p>
+              El mapa cultural de Inglehart-Welzel separa el bloque secular de autoexpresión (Europa protestante y
+              Anglosfera) del tradicional-supervivencia (MENA), con excepciones como el conservadurismo individualista
+              estadounidense y el pragmatismo secular-ordenado asiático y centroeuropeo.
+            </p>
+            <div class="axis-chips">
+              <span>EE. UU. Tradicional-Autoexpresión</span>
+              <span>Singapur Confuciano-Orden</span>
+              <span>Chequia Pragmático</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 4: SENSIBILIDAD, EXCLUIDOS Y CASOS LÍMITE -->
+    <section id="sensibilidad" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Sección 04 · Robustez y Fronteras</span>
+            <h2>Excluidos por Fiscalidad Expansiva y Casos Límite</h2>
+          </div>
+          <p class="section-desc">
+            Por qué el filtro antiestatista (<code>Fraser Área 1 ≥ 6.0</code>) es decisivo para evitar falsos positivos
+            y qué países muestran configuraciones asimétricas fuera del Top 10.
+          </p>
+        </div>
+
+        <div class="cases-grid">
+          <article class="card case-column">
+            <div class="case-badge badge-warn">Excluidos por Estado Expansivo (&lt; 6.0)</div>
+            <h3>Individualismo con Alta Fiscalidad</h3>
+            <p class="case-intro">
+              Sin el filtro antiestatista, varios Estados de bienestar altamente competitivos escalarían al podio por su
+              individualismo extremo y orden cívico.
+            </p>
+            <div id="excludedList" class="mini-country-list"></div>
+            <button type="button" id="tryWithoutFilterBtn" class="pill-btn pill-btn-outline full-width">
+              Simular ranking sin filtro antiestatista ↑
+            </button>
+          </article>
+
+          <article class="card case-column">
+            <div class="case-badge badge-blue">Posiciones #11 a #15 Filtradas</div>
+            <h3>A las Puertas del Top 10</h3>
+            <p class="case-intro">
+              Cumplen el umbral de Estado limitado (≥ 6.0), pero ceden terreno en Ley y Orden, individualismo actualizado o
+              mentalidad económica (GIEM).
+            </p>
+            <div id="contendersList" class="mini-country-list"></div>
+          </article>
+
+          <article class="card case-column">
+            <div class="case-badge badge-neutral">Casos Límite Asimétricos</div>
+            <h3>Modelos Parciales o No Soberanos</h3>
+            <p class="case-intro">
+              Economías que despuntan en un solo pilar pero muestran fuertes desequilibrios en el resto de dimensiones.
+            </p>
+            <ul class="asymmetric-list">
+              <li>
+                <strong>Emiratos Árabes Unidos</strong>
+                <span>Orden excepcional (95) y mercado ágil (72.0), pero régimen autoritario (EIU 3.18) y bajo individualismo (36).</span>
+              </li>
+              <li>
+                <strong>Hong Kong SAR</strong>
+                <span>#1 mundial en Fraser (8.53), excluido del ranking principal por ser territorio administrativo especial no soberano y deterioro democrático (5.03).</span>
+              </li>
+              <li>
+                <strong>El Salvador</strong>
+                <span>Salto extraordinario en Ley y Orden (92), pero libertad económica aún rezagada (Heritage 57.7) e individualismo bajo (19).</span>
+              </li>
+              <li>
+                <strong>Chile (#14 filtrado)</strong>
+                <span>Segundo Estado más contenido de la muestra (Fraser Área 1: 7.61), penalizado por el deterioro en Ley y Orden (71) y GIEM bajo (0.340).</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 5: EXPLORADOR COMPLETO DE 34 PAÍSES -->
+    <section id="explorador" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Sección 05 · Base de Datos Abierta</span>
+            <h2>Explorador Completo de las 34 Economías</h2>
+          </div>
+          <p class="section-desc">
+            Busca, filtra y ordena todos los indicadores del conjunto de datos <code>ideologia_global_2026.csv</code>.
+            Haz clic en cualquier fila para inspeccionar la ficha completa o descarga los datos filtrados.
+          </p>
+        </div>
+
+        <div class="card explorer-card">
+          <div class="explorer-toolbar">
+            <div class="toolbar-left">
+              <input
+                type="search"
+                id="tableSearch"
+                class="text-input"
+                placeholder="Buscar país, región o eje cultural..."
+                aria-label="Buscar país"
+              />
+              <select id="tableRegionFilter" class="select-input" aria-label="Filtrar tabla por región">
+                <option value="ALL">Todas las regiones</option>
+              </select>
+              <select id="tableStatusFilter" class="select-input" aria-label="Filtrar por estado de filtro antiestatista">
+                <option value="ALL">Todos (34)</option>
+                <option value="PASS">Cumplen filtro ≥ 6.0 (15)</option>
+                <option value="EXCLUDED">Estado &lt; 6.0 con ISID (6)</option>
+                <option value="PARTIAL">Referentes sin Área 1 / IDV (13)</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button type="button" id="downloadCsvBtn" class="pill-btn pill-btn-outline">Exportar CSV</button>
+              <a class="pill-btn pill-btn-outline" href="data/ranking_isid_2026.json" download>JSON</a>
+            </div>
+          </div>
+
+          <div class="table-wrap">
+            <table class="data-table" id="countriesTable">
+              <thead>
+                <tr>
+                  <th data-sort="ranking_isid_filtrado" class="sortable">Pos.</th>
+                  <th data-sort="pais" class="sortable">País</th>
+                  <th data-sort="region" class="sortable">Región</th>
+                  <th data-sort="isid_base" class="sortable num">ISID Base</th>
+                  <th data-sort="pilar1_libre_mercado" class="sortable num">P1 Mercado</th>
+                  <th data-sort="pilar2_resp_individual" class="sortable num">P2 Resp. Ind.</th>
+                  <th data-sort="pilar3_ley_orden" class="sortable num">P3 Orden</th>
+                  <th data-sort="heritage_2026" class="sortable num">Heritage</th>
+                  <th data-sort="fraser_tamano_estado" class="sortable num">Estado (F1)</th>
+                  <th data-sort="hofstede_idv_2023" class="sortable num">IDV 23</th>
+                  <th data-sort="giem_wvs" class="sortable num">GIEM</th>
+                  <th data-sort="eiu_democracia_2025" class="sortable num">EIU 25</th>
+                  <th data-sort="confianza_social_wvs" class="sortable num">Conf. %</th>
+                </tr>
+              </thead>
+              <tbody id="countriesTbody"></tbody>
+            </table>
+          </div>
+          <div class="explorer-footer">
+            <span id="tableCountText">Mostrando 34 de 34 países</span>
+            <span>Haz clic en cualquier encabezado para ordenar · Clic en una fila para ver detalle</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 6: METODOLOGÍA, FUENTES Y ACTUALIZACIÓN -->
+    <section id="metodologia" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="eyebrow">Sección 06 · Transparencia y Reproducibilidad</span>
+            <h2>Metodología del ISID, Fuentes y Actualización Periódica</h2>
+          </div>
+          <p class="section-desc">
+            Fórmulas abiertas, series verificadas 2021–2026 y arquitectura lista para refresco continuo en GitHub y Vercel.
+          </p>
+        </div>
+
+        <div class="methodology-grid">
+          <div class="card formula-card">
+            <h3>Construcción Matemática del ISID (0–100)</h3>
+            <div class="formula-block">
+              <span class="formula-tag">Pilar 1 · Libre Mercado Anti-Estatista</span>
+              <code>P1 = 0.35 × Heritage_2026 + 0.35 × (Fraser_2026 × 10) + 0.30 × (Fraser_Área1 × 10)</code>
+            </div>
+            <div class="formula-block">
+              <span class="formula-tag">Pilar 2 · Responsabilidad Individual</span>
+              <code>P2 = 0.50 × Hofstede_IDV_2023 + 0.50 × (Fraser_Área1 × 10)</code>
+            </div>
+            <div class="formula-block">
+              <span class="formula-tag">Pilar 3 · Ley y Orden</span>
+              <code>P3 = Gallup_Law_and_Order_2025</code>
+            </div>
+            <div class="formula-block formula-highlight">
+              <span class="formula-tag">Índice Base + Filtro Antiestatista</span>
+              <code>ISID = (P1 + P2 + P3) / 3  &nbsp;|&nbsp;  Requisito: Fraser_Área1 ≥ 6.0</code>
+            </div>
+            <p class="formula-note">
+              * Para EE. UU., el avance preliminar de Fraser 2025 proyecta el Área 1 (Tamaño del Estado) en 7.14.
+              En sensibilidad con GIEM, la mentalidad pro-mercado de WVS/Cato ajusta el Pilar 2 en los países con serie disponible.
+            </p>
+          </div>
+
+          <div class="card sources-card">
+            <h3>Fuentes Oficiales y Cadencia de Actualización</h3>
+            <ul class="sources-list">
+              <li>
+                <div>
+                  <strong>The Heritage Foundation</strong> — <em>Index of Economic Freedom 2026</em>
+                </div>
+                <span class="cadence-tag">Anual (Feb–Mar)</span>
+              </li>
+              <li>
+                <div>
+                  <strong>Fraser Institute</strong> — <em>Economic Freedom of the World 2026</em> (datos 2024 y avance EE. UU. 2025)
+                </div>
+                <span class="cadence-tag">Anual (Sep–Oct)</span>
+              </li>
+              <li>
+                <div>
+                  <strong>The Culture Factor / Hofstede Insights</strong> — <em>Individualism Score (actualización 2023)</em>
+                </div>
+                <span class="cadence-tag">Revisión periódica</span>
+              </li>
+              <li>
+                <div>
+                  <strong>Cato Institute</strong> — <em>Global Index of Economic Mentality (GIEM)</em> y <em>Human Freedom Index 2025</em>
+                </div>
+                <span class="cadence-tag">Anual / Periódica</span>
+              </li>
+              <li>
+                <div>
+                  <strong>Gallup</strong> — <em>Global Safety Report 2026 (Law and Order Index 2025)</em>
+                </div>
+                <span class="cadence-tag">Anual (Sep–Nov)</span>
+              </li>
+              <li>
+                <div>
+                  <strong>Economist Intelligence Unit (EIU)</strong> — <em>Democracy Index 2025</em>
+                </div>
+                <span class="cadence-tag">Anual (Feb–Mar)</span>
+              </li>
+              <li>
+                <div>
+                  <strong>World Values Survey (Ola 7) / IVS</strong> — <em>Confianza Social vía Our World in Data</em>
+                </div>
+                <span class="cadence-tag">Oleadas (3–5 años)</span>
+              </li>
+            </ul>
+            <div class="automation-note">
+              <strong>Pipeline automatizado incluido:</strong> El repositorio integra <code>scripts/build_dashboard_data.py</code>,
+              <code>scripts/check_sources.py</code> y un flujo mensual en <code>.github/workflows/periodic-update.yml</code> que
+              verifica fuentes abiertas, regenera <code>data/dashboard_data.json</code> y reconstruye los gráficos en <code>charts/</code>.
+              Al conectarse con Vercel, cada actualización en <code>main</code> se publica automáticamente.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Radiografía Ideológica Global · Índice ISID 2026</strong>
+        <p>Proyecto abierto reproducible (Python, Jupyter, Plotly, HTML/CSS/JS) desplegado en Vercel y versionado en GitHub.</p>
+      </div>
+      <div class="footer-links">
+        <a href="data/ideologia_global_2026.csv" download>Dataset CSV</a>
+        <a href="data/ranking_isid_2026.json" download>Ranking JSON</a>
+        <a href="notebooks/analisis_isid_2026.ipynb" download>Notebook .ipynb</a>
+        <a href="informe_ideologia_global_2026.md" target="_blank" rel="noopener">Informe .md</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL FICHA DE PAÍS -->
+  <div id="countryModal" class="modal-backdrop" hidden role="dialog" aria-modal="true" aria-labelledby="modalCountryTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <span class="eyebrow" id="modalCountryRegion">Región</span>
+          <h3 id="modalCountryTitle">País</h3>
+          <p id="modalCountrySubtitle" class="modal-subtitle"></p>
+        </div>
+        <button type="button" id="closeModalBtn" class="icon-btn" aria-label="Cerrar ficha">✕</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+      <div class="modal-footer">
+        <button type="button" id="compareCountryBtn" class="pill-btn pill-btn-primary">Comparar en el gráfico Radar</button>
+        <button type="button" id="closeModalFooterBtn" class="pill-btn pill-btn-outline">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

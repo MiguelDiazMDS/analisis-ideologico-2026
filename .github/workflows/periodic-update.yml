@@ -1,0 +1,50 @@
+name: Actualización Periódica ISID
+
+on:
+  schedule:
+    # Ejecución mensual el día 1 a las 06:00 UTC para comprobar nuevas ediciones
+    - cron: "0 6 1 * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "data/ideologia_global_2026.csv"
+      - "data/ranking_isid_2026.json"
+      - "scripts/build_dashboard_data.py"
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-dashboard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install pandas numpy plotly
+
+      - name: Rebuild dashboard JSON and HTML charts
+        run: python scripts/build_dashboard_data.py --rebuild-charts
+
+      - name: Check upstream data source availability
+        run: python scripts/check_sources.py
+        continue-on-error: true
+
+      - name: Commit updated artifacts if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/dashboard_data.json data/source_status.json charts/
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(data): actualizar panel y gráficos ISID"
+            git push
+          else
+            echo "Sin cambios en datos ni gráficos."
+          fi
