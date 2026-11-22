@@ -1,0 +1,90 @@
+{
+  "checked_at": "2026-11-22T12:53:30Z",
+  "sources": [
+    {
+      "id": "owid_democracy_eiu",
+      "nombre": "EIU Democracy Index (vía Our World in Data)",
+      "cadencia": "Anual (febrero-marzo)",
+      "automatizable": "Alta (CSV directo OWID)",
+      "url": "https://ourworldindata.org/grapher/democracy-index-eiu.csv?v=1&csvType=filtered&useColumnShortNames=true",
+      "check": {
+        "ok": false,
+        "error": "HTTP Error 403: Forbidden"
+      }
+    },
+    {
+      "id": "owid_trust_wvs",
+      "nombre": "Confianza Interpersonal WVS/IVS (vía Our World in Data)",
+      "cadencia": "Por oleadas (cada 3-5 años)",
+      "automatizable": "Alta (CSV directo OWID)",
+      "url": "https://ourworldindata.org/grapher/self-reported-trust-attitudes.csv?v=1&csvType=filtered&useColumnShortNames=true",
+      "check": {
+        "ok": true,
+        "status": 200,
+        "last_modified": "Sun, 22 Nov 2026 12:53:28 GMT",
+        "etag": null
+      }
+    },
+    {
+      "id": "heritage_ief",
+      "nombre": "The Heritage Foundation — Index of Economic Freedom",
+      "cadencia": "Anual (febrero-marzo)",
+      "automatizable": "Media (descarga Excel/CSV anual)",
+      "url": "https://www.heritage.org/index/",
+      "check": {
+        "ok": false,
+        "error": "HTTP Error 403: Forbidden"
+      }
+    },
+    {
+      "id": "fraser_efw",
+      "nombre": "Fraser Institute — Economic Freedom of the World",
+      "cadencia": "Anual (septiembre-octubre)",
+      "automatizable": "Media (descarga XLSX/CSV anual)",
+      "url": "https://www.fraserinstitute.org/studies/economic-freedom",
+      "check": {
+        "ok": false,
+        "error": "HTTP Error 403: Forbidden"
+      }
+    },
+    {
+      "id": "gallup_safety",
+      "nombre": "Gallup — Global Safety Report (Law & Order Index)",
+      "cadencia": "Anual (septiembre-noviembre)",
+      "automatizable": "Baja (informe PDF / tabla web)",
+      "url": "https://www.gallup.com/analytics/356963/gallup-global-law-and-order-report.aspx",
+      "check": {
+        "ok": true,
+        "status": 200,
+        "last_modified": "Sun, 22 Nov 2026 12:53:28 GMT",
+        "etag": "0000b50600968095:dtagent10349261020121938r0uh"
+      }
+    },
+    {
+      "id": "cato_giem_hfi",
+      "nombre": "Cato Institute — GIEM y Human Freedom Index",
+      "cadencia": "Anual (HFI) / Periódico (GIEM)",
+      "automatizable": "Media (dataset CSV descargable)",
+      "url": "https://www.cato.org/human-freedom-index",
+      "check": {
+        "ok": true,
+        "status": 200,
+        "last_modified": null,
+        "etag": null
+      }
+    },
+    {
+      "id": "culture_factor_idv",
+      "nombre": "The Culture Factor / Hofstede — Individualism Score",
+      "cadencia": "Discrecional (última revisión mayor: 2023)",
+      "automatizable": "Baja (revisión manual)",
+      "url": "https://www.theculturefactor.com/country-comparison-tool",
+      "check": {
+        "ok": true,
+        "status": 200,
+        "last_modified": "Wed, 18 Nov 2026 07:28:19 GMT",
+        "etag": null
+      }
+    }
+  ]
+}
