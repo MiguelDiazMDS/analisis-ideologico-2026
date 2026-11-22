@@ -2,6 +2,10 @@
 
 Panel web interactivo, conjunto de datos verificados (2021–2026), cuaderno Jupyter reproducible e informe completo del **Índice Sintético de Orientación de Derechas (ISID 2026)** para 34 economías.
 
+**Autoría:** Proyecto realizado por [@libemister](https://x.com/libemister) · [Seguir en X](https://x.com/intent/follow?screen_name=libemister)
+
+**Demo en abierto:** https://analisis-ideologico-2026.vercel.app
+
 ## Características del Panel Interactivo
 
 - **Simulador de Ponderaciones en Vivo:** Ajusta el peso de los 3 pilares (*Libre Mercado*, *Responsabilidad Individual* y *Ley y Orden*) y el umbral antiestatista (`Fraser Área 1 ≥ 6.0`) para comprobar al instante la sensibilidad del Top 10.

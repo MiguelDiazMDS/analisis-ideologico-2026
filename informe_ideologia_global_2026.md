@@ -1,5 +1,7 @@
 # Radiografía Ideológica Global y Ranking de los 10 Países con Mayor Orientación de Derechas (2026)
 
+> Proyecto realizado por [@libemister](https://x.com/libemister) · [Seguir en X](https://x.com/intent/follow?screen_name=libemister)
+
 Bajo una definición operativa estricta de la derecha política y económica —entendida como la convergencia simultánea de **libre mercado con Estado limitado**, **responsabilidad individual** y **preferencia por la ley y el orden**—, los diez Estados soberanos con una arquitectura ideológica e institucional más marcadamente de derechas en 2026 son, según el Índice Sintético de Orientación de Derechas (ISID, escala 0–100): **Suiza (83.58)**, **Singapur (78.19)**, **Estados Unidos (76.44)**, **Lituania (75.37)**, **Taiwán (75.05)**, **Canadá (74.85)**, **Estonia (74.66)**, **Nueva Zelanda (74.43)**, **República Checa (73.64)** y **Australia (73.37)**.
 
 El análisis empírico comparado de los seis ejes ideológicos contemporáneos —individualismo frente a colectivismo, libre mercado frente a estatismo, libertad individual frente a autoritarismo, alta frente a baja confianza social, seguridad frente a permisividad y conservadurismo frente a progresismo— muestra que estas dimensiones **no se alinean sobre un continuo unidimensional**. Sobre una muestra de 33 economías con datos comparables de 2022–2026:

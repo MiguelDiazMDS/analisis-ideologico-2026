@@ -299,7 +299,59 @@ code {
   font-size: 1.07rem;
   color: var(--ink-secondary);
   max-width: 850px;
-  margin: 0 0 2rem;
+  margin: 0 0 1.25rem;
+}
+
+.author-bar {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 0.5rem 0.65rem 0.5rem 0.95rem;
+  margin-bottom: 1.85rem;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.author-credit {
+  font-size: 0.86rem;
+  color: var(--ink-secondary);
+}
+
+.author-handle {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.author-handle:hover {
+  color: var(--accent);
+}
+
+.x-follow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.36rem 0.82rem;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.15s ease, transform 0.12s ease;
+}
+
+.x-follow-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.x-follow-btn-sm {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.78rem;
 }
 
 .kpi-grid {
@@ -1320,6 +1372,7 @@ code {
 
 .footer-links {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
   font-weight: 600;
