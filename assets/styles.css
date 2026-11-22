@@ -914,6 +914,12 @@ code {
   overflow-x: auto;
 }
 
+.radar-table-wrap .data-table th,
+.radar-table-wrap .data-table td {
+  padding: 0.52rem 0.5rem;
+  font-size: 0.78rem;
+}
+
 .iframe-shell {
   padding: 0.75rem 1.25rem 1.25rem;
 }

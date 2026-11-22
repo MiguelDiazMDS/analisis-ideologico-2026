@@ -165,9 +165,10 @@
         x: liveScores,
         name: "ISID Escenario Activo",
         marker: { color: barColors, opacity: 0.9, line: { width: 0 } },
-        text: liveScores.map((v) => v.toFixed(2)),
-        textposition: "outside",
-        textfont: { family: "JetBrains Mono, monospace", size: 11, color: t.font.color },
+        text: liveScores.map((v) => ` ${v.toFixed(2)} `),
+        textposition: "inside",
+        insidetextanchor: "end",
+        textfont: { family: "JetBrains Mono, monospace", size: 11, color: "#ffffff" },
         hovertemplate:
           "<b>%{y}</b><br>ISID Activo: <b>%{x:.2f}</b><extra></extra>",
       },
@@ -552,12 +553,12 @@
     if (!window.Plotly) return;
     const t = plotlyTheme();
     const dims = [
-      { label: "Libertad Económica", get: (c) => c.heritage_2026 },
-      { label: "Estado Limitado (×10)", get: (c) => (c.fraser_tamano_estado !== null ? c.fraser_tamano_estado * 10 : null) },
+      { label: "Libre Mercado", get: (c) => c.heritage_2026 },
+      { label: "Estado Limitado", get: (c) => (c.fraser_tamano_estado !== null ? c.fraser_tamano_estado * 10 : null) },
       { label: "Individualismo", get: (c) => c.hofstede_idv_2023 },
       { label: "Ley y Orden", get: (c) => c.gallup_ley_orden_2025 },
-      { label: "Democracia (×10)", get: (c) => (c.eiu_democracia_2025 !== null ? c.eiu_democracia_2025 * 10 : null) },
-      { label: "Confianza Social %", get: (c) => c.confianza_social_wvs },
+      { label: "Democracia", get: (c) => (c.eiu_democracia_2025 !== null ? c.eiu_democracia_2025 * 10 : null) },
+      { label: "Confianza Social", get: (c) => c.confianza_social_wvs },
     ];
 
     const selected = state.radarSelection
@@ -590,7 +591,7 @@
       paper_bgcolor: t.paper_bgcolor,
       plot_bgcolor: t.plot_bgcolor,
       font: t.font,
-      margin: { l: 55, r: 55, t: 35, b: 45 },
+      margin: { l: 88, r: 92, t: 38, b: 48 },
       polar: {
         bgcolor: "rgba(0,0,0,0)",
         radialaxis: {
